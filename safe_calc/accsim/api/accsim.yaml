@@ -1,0 +1,61 @@
+config_version: google.api.Service
+http:
+    rules:
+        - body: '*'
+          post: /accsim/AccSceneGet
+          selector: accsim.AccSimService.AccSceneGet
+        - body: '*'
+          post: /accsim/AccSceneSave
+          selector: accsim.AccSimService.AccSceneSave
+        - body: '*'
+          post: /accsim/AccSceneDelete
+          selector: accsim.AccSimService.AccSceneDelete
+        - body: '*'
+          post: /accsim/AccSceneInfo
+          selector: accsim.AccSimService.AccSceneInfo
+        - body: '*'
+          post: /accsim/PoolFireCalc
+          selector: accsim.AccSimService.PoolFireCalc
+        - body: '*'
+          post: /accsim/FlowingFireCalc
+          selector: accsim.AccSimService.FlowingFireCalc
+        - body: '*'
+          post: /accsim/SealRingCalc
+          selector: accsim.AccSimService.SealRingCalc
+        - body: '*'
+          post: /accsim/JetFireCalc
+          selector: accsim.AccSimService.JetFireCalc
+        - body: '*'
+          post: /accsim/BallFireCalc
+          selector: accsim.AccSimService.BallFireCalc
+        - body: '*'
+          post: /accsim/FireExtinguishingDemand
+          selector: accsim.AccSimService.FireExtinguishingDemand
+        - body: '*'
+          post: /accsim/FireExtinguishingSave
+          selector: accsim.AccSimService.FireExtinguishingSave
+        - body: '*'
+          post: /accsim/CoolingWaterDemand
+          selector: accsim.AccSimService.CoolingWaterDemand
+        - body: '*'
+          post: /accsim/CoolingWaterSave
+          selector: accsim.AccSimService.CoolingWaterSave
+        - body: '*'
+          post: /accsim/EquipmentPersonDemand
+          selector: accsim.AccSimService.EquipmentPersonDemand
+        - body: '*'
+          post: /accsim/EquipmentRequire
+          selector: accsim.AccSimService.EquipmentRequire
+        - body: '*'
+          post: /accsim/MaterialBurningHeatGet
+          selector: accsim.AccSimService.MaterialBurningHeatGet
+        - body: '*'
+          post: /accsim/EnterpriseAreaGet
+          selector: accsim.AccSimService.EnterpriseAreaGet
+        - body: '*'
+          post: /accsim/EnterprisesGet
+          selector: accsim.AccSimService.EnterprisesGet
+        - body: '*'
+          post: /accsim/EnterpriseGet
+          selector: accsim.AccSimService.EnterpriseGet
+type: 3

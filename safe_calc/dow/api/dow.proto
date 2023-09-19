@@ -1,0 +1,255 @@
+syntax = "proto3";
+
+package dow;
+option go_package = "safe/dow/gen;dowpb";
+
+
+message MaterialCoefficientGetChemicalActivityGradeRequest {
+  string reaction_character = 1;
+}
+message MaterialCoefficientGetChemicalActivityGradeResponse {
+  int32 chemical_activity_grade = 1;
+}
+
+message MaterialCoefficientRequest {
+  int32 chemical_activity_grade = 1;
+  string type = 2;
+  string type_detail = 3;
+}
+message MaterialCoefficientResponse {
+  float coefficient = 1;
+}
+
+message MaterialCoefficientSaveUnknownMaterialRequest {
+  string name = 1;
+  float coefficient = 3;
+}
+message MaterialCoefficientSaveUnknownMaterialResponse {
+
+}
+
+message MaterialCoefficientGetKnownCoefficientRequest {
+  string name = 1;
+}
+message MaterialCoefficientGetKnownCoefficientResponse {
+  float coefficient = 2;
+}
+message MaterialCoefficientGetKnownNamesRequest {
+}
+message Name {
+  string name = 1;
+  string code = 2;
+}
+message MaterialCoefficientGetKnownNamesResponse {
+  repeated Name names = 1;
+}
+
+message MaterialCoefficientGetReactionCharactersRequest {
+
+}
+message ReactionCharacter {
+  string name = 1;
+  string code = 2;
+}
+message MaterialCoefficientGetReactionCharactersResponse {
+  repeated ReactionCharacter reaction_characters = 1;
+}
+
+message MaterialCoefficientGetTypesRequest {
+
+}
+
+message Type {
+  string name = 1;
+  string code = 2;
+  repeated Type children = 3;
+}
+message MaterialCoefficientGetTypesResponse {
+  repeated Type types = 1;
+}
+
+message ProcessHazardCoefficientGetRequest {
+
+}
+
+message Coefficient {
+  string name = 1;
+  float code = 2;
+}
+message ProcessHazardCoefficientGetResponse {
+    repeated Coefficient A1 = 1;
+    repeated Coefficient B1 = 2;
+    repeated Coefficient C1 = 3;
+    repeated Coefficient D1 = 4;
+    repeated Coefficient E1 = 5;
+    repeated Coefficient F1 = 6;
+    repeated Coefficient A2 = 7;
+    repeated Coefficient B2 = 8;
+    repeated Coefficient C2 = 9;
+    repeated Coefficient D2 = 10;
+    repeated Coefficient E2 = 11;
+    repeated Coefficient F2 = 12;
+    repeated Coefficient G2 = 13;
+    repeated Coefficient H2 = 14;
+    repeated Coefficient I2 = 15;
+    repeated Coefficient J2 = 16;
+    repeated Coefficient K2 = 17;
+    repeated Coefficient L2 = 18;
+}
+
+message CompensationCoefficientGetRequest {
+
+}
+
+message CompensationCoefficientGetResponse {
+    repeated Coefficient a1 = 1;
+    repeated Coefficient b1 = 2;
+    repeated Coefficient c1 = 3;
+    repeated Coefficient d1 = 4;
+    repeated Coefficient e1 = 5;
+    repeated Coefficient f1 = 6;
+    repeated Coefficient g1 = 7;
+    repeated Coefficient h1 = 8;
+    repeated Coefficient i1 = 9;
+    repeated Coefficient a2 = 10;
+    repeated Coefficient b2 = 11;
+    repeated Coefficient c2 = 12;
+    repeated Coefficient d2 = 13;
+    repeated Coefficient a3 = 14;
+    repeated Coefficient b3 = 15;
+    repeated Coefficient c3 = 16;
+    repeated Coefficient d3 = 17;
+    repeated Coefficient e3 = 18;
+    repeated Coefficient f3 = 19;
+    repeated Coefficient g3 = 20;
+    repeated Coefficient h3 = 21;
+    repeated Coefficient i3 = 22;
+}
+
+message GeneralProcessHazardCoefficientCalcRequest {
+  float A1 = 1;
+  float B1 = 2;
+  float C1 = 3;
+  float D1 = 4;
+  float E1 = 5;
+  float F1 = 6;
+}
+
+message GeneralProcessHazardCoefficientCalcResponse {
+  float F1 = 1;
+}
+
+message SpecialProcessHazardCoefficientCalcRequest {
+  float A2 = 1;
+  float B2 = 2;
+  float C2 = 3;
+  float D2 = 4;
+  float E2 = 5;
+  float F2 = 6;
+  float G2 = 7;
+  float H2 = 8;
+  float I2 = 9;
+  float J2 = 10;
+  float K2 = 11;
+  float L2 = 12;
+  float general_process_hazard_coefficient_f1 = 13;
+}
+message SpecialProcessHazardCoefficientCalcResponse {
+  float F2 = 2;
+  float F3 = 3;
+}
+
+message ProcessControlCompensationCoefficientCalcRequest {
+  float a1 = 1;
+  float b1 = 2;
+  float c1 = 3;
+  float d1 = 4;
+  float e1 = 5;
+  float f1 = 6;
+  float g1 = 7;
+  float h1 = 8;
+  float i1 = 9;
+}
+message ProcessControlCompensationCoefficientCalcResponse {
+  float C1 = 1;
+}
+
+message MaterialIsolationCompensationCoefficientCalcRequest {
+  float a2 = 1;
+  float b2 = 2;
+  float c2 = 3;
+  float d2 = 4;
+}
+message MaterialIsolationCompensationCoefficientCalcResponse {
+  float C2 = 1;
+}
+
+message FirePreventionMeasureCompensationCoefficientCalcRequest {
+  float a3 = 1;
+  float b3 = 2;
+  float c3 = 3;
+  float d3 = 4;
+  float e3 = 5;
+  float f3 = 6;
+  float g3 = 7;
+  float h3 = 8;
+  float i3 = 9;
+}
+message FirePreventionMeasureCompensationCoefficientCalcResponse {
+  float C3 = 1;
+}
+
+message EvaluationResultsCalcRequest {
+  float C1 = 1;
+  float C2 = 2;
+  float C3 = 3;
+  float material_coefficient_mf = 4;
+  float process_hazard_coefficient_f3 = 5;
+}
+message EvaluationResultsCalcResponse {
+  float C = 1;
+  float initial_f_ei = 2;
+  string initial_unit_hazard_level = 3;
+  float initial_r = 4;
+  float initial_s = 5;
+  float initial_unit_hazard_coefficient = 6;
+  float compensation_f_ei = 7;
+  string compensation_unit_hazard_level = 8;
+  float compensation_r = 9;
+  float compensation_s = 10;
+  float compensation_unit_hazard_coefficient = 11;
+  string conclusion = 12;
+}
+
+service DowService {
+  // 化学活性等级
+  rpc MaterialCoefficientGetChemicalActivityGrade(MaterialCoefficientGetChemicalActivityGradeRequest) returns (MaterialCoefficientGetChemicalActivityGradeResponse);
+  // 计算物质系数
+  rpc MaterialCoefficient(MaterialCoefficientRequest) returns (MaterialCoefficientResponse);
+  // 保存未知物质
+  rpc MaterialCoefficientSaveUnknownMaterial(MaterialCoefficientSaveUnknownMaterialRequest) returns (MaterialCoefficientSaveUnknownMaterialResponse);
+  // 根据名称查询已知物质系数
+  rpc MaterialCoefficientGetKnownCoefficient(MaterialCoefficientGetKnownCoefficientRequest) returns (MaterialCoefficientGetKnownCoefficientResponse);
+  // 所有已知物质名称
+  rpc MaterialCoefficientGetKnownNames(MaterialCoefficientGetKnownNamesRequest) returns (MaterialCoefficientGetKnownNamesResponse);
+  // 查询物质反应特性
+  rpc MaterialCoefficientGetReactionCharacters(MaterialCoefficientGetReactionCharactersRequest) returns (MaterialCoefficientGetReactionCharactersResponse);
+  // 查询物质类型
+  rpc MaterialCoefficientGetTypes(MaterialCoefficientGetTypesRequest) returns (MaterialCoefficientGetTypesResponse);
+  // 获取所有工艺危险系数
+  rpc ProcessHazardCoefficientGet(ProcessHazardCoefficientGetRequest) returns (ProcessHazardCoefficientGetResponse);
+  // 获取所有补偿系数
+  rpc CompensationCoefficientGet(CompensationCoefficientGetRequest) returns (CompensationCoefficientGetResponse);
+  // 计算一般工艺危险系数
+  rpc GeneralProcessHazardCoefficientCalc(GeneralProcessHazardCoefficientCalcRequest) returns (GeneralProcessHazardCoefficientCalcResponse);
+  // 计算特殊工艺危险系数
+  rpc SpecialProcessHazardCoefficientCalc(SpecialProcessHazardCoefficientCalcRequest) returns (SpecialProcessHazardCoefficientCalcResponse);
+  // 计算工艺控制补偿系数
+  rpc ProcessControlCompensationCoefficientCalc(ProcessControlCompensationCoefficientCalcRequest) returns (ProcessControlCompensationCoefficientCalcResponse);
+  // 物质隔离补偿系数
+  rpc MaterialIsolationCompensationCoefficientCalc(MaterialIsolationCompensationCoefficientCalcRequest) returns (MaterialIsolationCompensationCoefficientCalcResponse);
+  // 防火措施补偿系数
+  rpc FirePreventionMeasureCompensationCoefficientCalc(FirePreventionMeasureCompensationCoefficientCalcRequest) returns (FirePreventionMeasureCompensationCoefficientCalcResponse);
+  // 评价结果
+  rpc EvaluationResultsCalc(EvaluationResultsCalcRequest) returns (EvaluationResultsCalcResponse);
+}

@@ -1,0 +1,67 @@
+config_version: google.api.Service
+http:
+    rules:
+        - body: '*'
+          post: /mond/MaterialCoefficientSaveUnknownMaterial
+          selector: mond.MondService.MaterialCoefficientSaveUnknownMaterial
+        - body: '*'
+          post: /mond/MaterialCoefficientGetKnownCoefficient
+          selector: mond.MondService.MaterialCoefficientGetKnownCoefficient
+        - body: '*'
+          post: /mond/MaterialCoefficientGetKnownNames
+          selector: mond.MondService.MaterialCoefficientGetKnownNames
+        - body: '*'
+          post: /mond/MaterialCoefficient
+          selector: mond.MondService.MaterialCoefficient
+        - body: '*'
+          post: /mond/SpecialMaterialHazard
+          selector: mond.MondService.SpecialMaterialHazard
+        - body: '*'
+          post: /mond/GeneralProcessHazard
+          selector: mond.MondService.GeneralProcessHazard
+        - body: '*'
+          post: /mond/SpecialProcessHazard
+          selector: mond.MondService.SpecialProcessHazard
+        - body: '*'
+          post: /mond/ArrangementHazardCoefficient
+          selector: mond.MondService.ArrangementHazardCoefficient
+        - body: '*'
+          post: /mond/NumHazardCoefficient
+          selector: mond.MondService.NumHazardCoefficient
+        - body: '*'
+          post: /mond/PoisonHazardCoefficient
+          selector: mond.MondService.PoisonHazardCoefficient
+        - body: '*'
+          post: /mond/PoisonHazardCoefficientGetTLVTypeExposure
+          selector: mond.MondService.PoisonHazardCoefficientGetTLVTypeExposure
+        - body: '*'
+          post: /mond/ContainerSystemCoefficient
+          selector: mond.MondService.ContainerSystemCoefficient
+        - body: '*'
+          post: /mond/ProcessManagementCoefficient
+          selector: mond.MondService.ProcessManagementCoefficient
+        - body: '*'
+          post: /mond/MaterialIsolationCoefficient
+          selector: mond.MondService.MaterialIsolationCoefficient
+        - body: '*'
+          post: /mond/SafetyAttitudeCoefficient
+          selector: mond.MondService.SafetyAttitudeCoefficient
+        - body: '*'
+          post: /mond/FirePreventionCoefficient
+          selector: mond.MondService.FirePreventionCoefficient
+        - body: '*'
+          post: /mond/FireFightingActivityCoefficient
+          selector: mond.MondService.FireFightingActivityCoefficient
+        - body: '*'
+          post: /mond/InitialCommentIndexFinialCompensationCoefficient
+          selector: mond.MondService.InitialCommentIndexFinialCompensationCoefficient
+        - body: '*'
+          post: /mond/MaterialsGet
+          selector: mond.MondService.MaterialsGet
+        - body: '*'
+          post: /mond/MaterialEdit
+          selector: mond.MondService.MaterialEdit
+        - body: '*'
+          post: /mond/MaterialDelete
+          selector: mond.MondService.MaterialDelete
+type: 3

@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package fireloss;
+option go_package = "safe/fireloss/gen;firelosspb";
+
+message FireGrowthCategoryRequest {
+
+}
+message Level {
+  string name = 1;
+  string code = 2;
+}
+message Category {
+  string name = 1;
+  string code = 2;
+  repeated Level children = 3;
+}
+message FireGrowthCategoryResponse {
+  repeated Category categories = 1;
+}
+
+message FireGrowthCoefficientRequest {
+  float Mv = 1;
+  float Hc = 2;
+  float At = 3;
+  float v = 4;
+  float t = 5;
+  float t0 = 6;
+  string places = 7;
+  string level = 8;
+}
+message FireGrowthCoefficientResponse {
+  float fire_density_q = 1;
+  float a = 2;
+  float fire_release_rate_q = 3;
+}
+
+message StageOneRequest {
+  float p_a1 = 1;
+  float p_a2 = 2;
+  float p_a3 = 3;
+  float a = 4;
+  float v = 5;
+}
+message StageOneResponse {
+  float p_fph1 = 1;
+  float t_fpdh1 = 2;
+  float A1 = 3;
+}
+
+message StageTwoRequest {
+  float p_b1 = 1;
+  float p_b2 = 2;
+  float p_fph1 = 3;
+  float h = 4;
+  float v = 5;
+}
+message StageTwoResponse {
+  float p_fph2 = 1;
+  float t_fpdh2 = 2;
+  float A2 = 3;
+}
+
+message StageThreeRequest {
+  float p_f = 1;
+  float t_ht = 2;
+  float Q = 3;
+  float A = 4;
+  float H = 5;
+  float a_t = 6;
+  float t_inf = 7;
+  float t0 = 8;
+  float k = 9;
+  float rho = 10;
+  float C = 11;
+  float t = 12;
+  float p_fph2 = 13;
+}
+message StageThreeResponse {
+  float p_fph3 = 1;
+  float t_fph3 = 2;
+  float A3 = 3;
+}
+
+message StageFourRequest {
+  float p_c1 = 1;
+  float p_f = 2;
+  float p_fph3 = 3;
+  float v = 4;
+}
+message StageFourResponse {
+  float p_fph4 = 1;
+  float A4 = 3;
+}
+
+message BurntAreaRequest {
+  float y_l = 1;
+  float S = 2;
+  float p_fire = 3;
+  float p_fph1 = 4;
+  float p_fph2 = 5;
+  float p_fph3 = 6;
+  float p_fph4 = 7;
+  float A1 = 8;
+  float A2 = 9;
+  float A3 = 10;
+  float A4 = 11;
+  float w_e = 13;
+}
+message BurntAreaResponse {
+  float a_fz = 1;
+  float a_f = 2;
+  float e_fire = 3;
+}
+
+service FireLossService {
+  // 计算火灾成长系数
+  rpc FireGrowthCoefficient(FireGrowthCoefficientRequest) returns (FireGrowthCoefficientResponse);
+  // 获取火灾成长系数类别
+  rpc FireGrowthCategory(FireGrowthCategoryRequest) returns (FireGrowthCategoryResponse);
+  // 阶段1的计算
+  rpc StageOne(StageOneRequest) returns (StageOneResponse);
+  // 阶段2的计算
+  rpc StageTwo(StageTwoRequest) returns (StageTwoResponse);
+  // 阶段3的计算
+  rpc StageThree(StageThreeRequest) returns (StageThreeResponse);
+  // 阶段4的计算
+  rpc StageFour(StageFourRequest) returns (StageFourResponse);
+  // 烧损面积
+  rpc BurntArea(BurntAreaRequest) returns (BurntAreaResponse);
+}

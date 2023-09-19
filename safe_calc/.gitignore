@@ -1,0 +1,3 @@
+nuxt-app/.nuxt
+nuxt-app/node_modules
+auth/private.key

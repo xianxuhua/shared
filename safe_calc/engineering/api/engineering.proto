@@ -1,0 +1,167 @@
+syntax = "proto3";
+
+package engineering;
+option go_package = "safe/engineering/gen;engineeringpb";
+
+message FireLoadFactorRequest {
+  float Qi = 1;
+  float Qm = 2;
+}
+message FireLoadFactorResponse {
+  float q = 1;
+}
+
+message AreaFactorRequest {
+  float l = 1;
+  float b = 2;
+}
+message AreaFactorResponse {
+  float g = 1;
+}
+
+message FireSpreadFactorRequest {
+  float T = 1;
+  float indoor_items_average_size_m = 2;
+  int32 flame_propagation_level_m = 3;
+}
+message FireSpreadFactorResponse {
+  float i = 1;
+}
+
+message VentilationFactorRequest {
+  float Qm = 1;
+  float k = 2;
+  float h = 3;
+}
+message VentilationFactorResponse {
+  float v = 1;
+}
+
+message ChannelFactorRequest {
+  float b = 1;
+  float h_plus = 2;
+  float h_sub = 3;
+}
+message ChannelFactorResponse {
+  float z = 1;
+}
+
+message FloorFactorRequest {
+  float E = 1;
+}
+message FloorFactorResponse {
+  float e = 1;
+}
+
+message PotentialRiskRequest {
+  float q = 1;
+  float i = 2;
+  float g = 3;
+  float e = 4;
+  float v = 5;
+  float z = 6;
+}
+message PotentialRiskResponse {
+  float P = 1;
+}
+
+message ActivityFactorRequest {
+  float main_activity = 1;
+  float secondary_activity = 2;
+  float indoor_heating_system = 3;
+  float electrical_equipment = 4;
+  float combustible = 5;
+}
+message ActivityFactorResponse {
+  float a = 1;
+}
+
+// TODO: get unknown params
+message EvacuationTimeFactorRequest {
+  float p = 1;
+  float x_big = 2;
+  float x_small = 3;
+  float b = 4;
+  float l = 5;
+  float h_plus = 6;
+  float h_sub = 7;
+  float K = 8;
+  float e = 9;
+}
+message EvacuationTimeFactorResponse {
+  float t = 1;
+}
+
+message ProtectionLevelRequest {
+  float W = 1;
+  float N = 2;
+  float S = 3;
+  float F = 4;
+}
+message ProtectionLevelResponse {
+  float D = 1;
+}
+
+message AcceptanceCriteriaRequest {
+  float a = 1;
+  float t = 2;
+  float c = 3;
+}
+message AcceptanceCriteriaResponse {
+  float A = 1;
+}
+
+message FireRiskRequest {
+  float A = 1;
+  float D = 2;
+  float P = 3;
+  float U = 4;
+  float N = 5;
+  float a_small = 6;
+  float t = 7;
+  float r = 8;
+  float d_small = 9;
+  float i = 10;
+  float g = 11;
+  float e = 12;
+  float v = 13;
+  float z = 14;
+}
+message FireRiskResponse {
+  float R = 1;
+  float P1 = 2;
+  float D1 = 3;
+  float R1 = 4;
+  float A1 = 5;
+  float A2 = 6;
+  float P2 = 7;
+  float R2 = 8;
+  float D2 = 9;
+}
+
+service EngineeringService {
+  // 火灾荷载因子
+  rpc FireLoadFactor(FireLoadFactorRequest) returns (FireLoadFactorResponse);
+  // 面积因子
+  rpc AreaFactor(AreaFactorRequest) returns (AreaFactorResponse);
+  // 火灾蔓延因子
+  rpc FireSpreadFactor(FireSpreadFactorRequest) returns (FireSpreadFactorResponse);
+  // 通风因子
+  rpc VentilationFactor(VentilationFactorRequest) returns (VentilationFactorResponse);
+  // 通道因子
+  rpc ChannelFactor(ChannelFactorRequest) returns (ChannelFactorResponse);
+  // 楼层因子
+  rpc FloorFactor(FloorFactorRequest) returns (FloorFactorResponse);
+  // 潜在风险
+  rpc PotentialRisk(PotentialRiskRequest) returns (PotentialRiskResponse);
+  // 活动因子
+  rpc ActivityFactor(ActivityFactorRequest) returns (ActivityFactorResponse);
+  // 疏散时间因子
+  rpc EvacuationTimeFactor(EvacuationTimeFactorRequest) returns (EvacuationTimeFactorResponse);
+  // 保护水平
+  rpc ProtectionLevel(ProtectionLevelRequest) returns (ProtectionLevelResponse);
+  // 接受标准
+  rpc AcceptanceCriteria(AcceptanceCriteriaRequest) returns (AcceptanceCriteriaResponse);
+  // 火灾风险
+  rpc FireRisk(FireRiskRequest) returns (FireRiskResponse);
+}

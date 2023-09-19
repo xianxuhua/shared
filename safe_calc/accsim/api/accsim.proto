@@ -1,0 +1,494 @@
+syntax = "proto3";
+
+package accsim;
+option go_package = "safe/accsim/gen;accsimpb";
+
+
+message AccSceneGetRequest {
+}
+message AccScene {
+  int32 id = 1;
+  string name = 2;
+  float death_radius = 3;
+  float big_injury_radius = 4;
+  float small_injury_radius = 5;
+  double longitude = 6;
+  double latitude = 7;
+  string wind_direction = 8;
+  float wind_speed = 9;
+  float target_dis = 10;
+  float liquid_tank_diameter = 11;
+  repeated float xs = 12;
+  repeated float ys = 13;
+  float safe_radius = 14;
+  string type = 15;
+  string add_time = 16;
+}
+message AccSceneGetResponse {
+  repeated AccScene acc_scenes = 1;
+}
+
+message AccSceneSaveRequest {
+  string name = 1;
+  string type = 2;
+  float death_radius = 3;
+  float big_injury_radius = 4;
+  float small_injury_radius = 5;
+  double longitude = 6;
+  double latitude = 7;
+  string wind_direction = 8;
+  float wind_speed = 9;
+  float target_dis = 10;
+  float liquid_tank_diameter = 11;
+  repeated float xs = 12;
+  repeated float ys = 13;
+  float safe_radius = 14;
+}
+message AccSceneSaveResponse {
+
+}
+
+message AccSceneDeleteRequest {
+  int32 id = 1;
+}
+message AccSceneDeleteResponse {
+
+}
+
+message AccSceneInfoRequest {
+  int32 id = 1;
+}
+message AccSceneInfoResponse {
+  string name = 1;
+  string type = 2;
+  float death_radius = 3;
+  float big_injury_radius = 4;
+  float small_injury_radius = 5;
+  double longitude = 6;
+  double latitude = 7;
+  string wind_direction = 8;
+  float wind_speed = 9;
+  float target_dis = 10;
+  float liquid_tank_diameter = 11;
+  repeated float xs = 12;
+  repeated float ys = 13;
+  float safe_radius = 14;
+}
+
+message PoolFireCalcRequest {
+  string scene_name = 2;
+  string wind_direction = 4;
+  float wind_speed = 5;
+  float liquid_tank_diameter = 6;
+  float target_dis = 8;
+  float density = 9;
+  float burning_rate = 10;
+  float burning_heat = 11;
+}
+message PoolFireCalcResponse {
+  float fire_height = 1;
+  float tilt_angle = 2;
+  string extended_flame_diameter = 3;
+  float thermal_radiation_power = 4;
+  float death_radius = 5;
+  float big_injury_radius = 6;
+  float small_injury_radius = 7;
+  repeated float xs = 8;
+  repeated float ys = 9;
+  float safe_radius = 10;
+}
+
+message FlowingFireCalcRequest {
+  string fire_tank = 1;
+  string scene_name = 2;
+  string material_type = 3;
+  string wind_direction = 4;
+  float wind_speed = 5;
+  float liquid_tank_diameter = 6;
+  string scene_id = 7;
+  float target_dis = 8;
+  float density = 9;
+  float burning_rate = 10;
+  float burning_heat = 11;
+}
+message FlowingFireCalcResponse {
+  float fire_height = 1;
+  float tilt_angle = 2;
+  string extended_flame_diameter = 3;
+  float thermal_radiation_power = 4;
+  float death_radius = 5;
+  float big_injury_radius = 6;
+  float small_injury_radius = 7;
+  repeated float xs = 8;
+  repeated float ys = 9;
+  float safe_radius = 10;
+}
+
+message SealRingCalcRequest {
+  string fire_tank = 1;
+  string scene_name = 2;
+  string material_type = 3;
+  string wind_direction = 4;
+  float wind_speed = 5;
+  float liquid_tank_diameter = 6;
+  string scene_id = 7;
+  float target_dis = 8;
+  float density = 9;
+  float burning_rate = 10;
+  float burning_heat = 11;
+  float ring_width = 12;
+}
+message SealRingCalcResponse {
+  float thermal_radiation_power = 1;
+  float death_radius = 2;
+  float big_injury_radius = 3;
+  float small_injury_radius = 4;
+  float safe_radius = 5;
+}
+
+message JetFireCalcRequest {
+  // 孔径
+  float aperture = 1;
+  // 压力
+  float pressure = 2;
+  // 比热容
+  float specific_heat_capacity = 3;
+  // 分子量
+  float molecular_weight = 4;
+  // 燃烧热
+  float burning_heat = 5;
+  float target_dis = 6;
+  // 管道压力
+  float pipeline_pressure = 7;
+  float wind_speed = 8;
+  string scene_name = 9;
+  string wind_direction = 10;
+}
+message JetFireCalcResponse {
+  float small_injury_radius = 1;
+  float death_radius = 2;
+  float big_injury_radius = 3;
+  repeated float xs = 4;
+  repeated float ys = 5;
+  // 热辐射通量
+  float heat_radiation_flux = 6;
+  float fire_height = 7;
+  float fire_diameter = 8;
+}
+
+message BallFireCalcRequest {
+  // 泄漏量
+  float leakage = 1;
+  // 燃烧热
+  float burning_heat = 2;
+  float target_dis = 3;
+  float wind_speed = 4;
+  string scene_name = 5;
+  string wind_direction = 6;
+}
+message BallFireCalcResponse {
+  float small_injury_radius = 1;
+  float death_radius = 2;
+  float big_injury_radius = 3;
+  repeated float xs = 4;
+  repeated float ys = 5;
+  // 火焰最大半径
+  float max_radius = 6;
+  // 火球燃烧的持续时间
+  float duration = 7;
+  // 热辐射通量
+  float heat_radiation_flux = 8;
+}
+
+message FireExtinguishingDemandRequest {
+  // 液池直径
+  float liquid_tank_diameter = 1;
+  // 泡沫灭火供给强度
+  float supply_strength = 2;
+  // 泡沫混合液连续供给时间
+  float supply_time = 3;
+  // 混合比
+  float mix_ratio = 4;
+}
+message FireExtinguishingDemandResponse {
+  // 泡沫灭火剂流量(理论)
+  float fire_extinguishing_flow_theory = 1;
+  // 泡沫灭火剂流量(实际)
+  float fire_extinguishing_flow_actual = 2;
+  // 泡沫原液理论流量
+  float primary_liquid_flow_theory = 3;
+  // 泡沫原液实际流量
+  float primary_liquid_flow_actual = 4;
+  // 泡沫原液理论用量
+  float primary_liquid_usage_theory = 5;
+  // 泡沫原液实际用量
+  float primary_liquid_usage_actual = 6;
+  // 泡沫灭火剂用量(理论)
+  float fire_extinguishing_usage_theory = 7;
+  // 泡沫灭火剂用量(实际)
+  float fire_extinguishing_usage_actual = 8;
+  // 配置泡沫灭火剂用水流量(理论)
+  float config_fire_extinguishing_flow_theory = 9;
+  // 配置泡沫灭火剂用水流量(实际)
+  float config_fire_extinguishing_flow_actual = 10;
+  // 配置泡沫灭火剂用水量(理论)
+  float config_fire_extinguishing_usage_theory = 11;
+  // 配置泡沫灭火剂用水量(实际)
+  float config_fire_extinguishing_usage_actual = 12;
+}
+
+message FireExtinguishingSaveRequest {
+  // 泡沫灭火剂流量(理论)
+  float fire_extinguishing_flow_theory = 1;
+  // 泡沫灭火剂流量(实际)
+  float fire_extinguishing_flow_actual = 2;
+  // 泡沫原液理论流量
+  float primary_liquid_flow_theory = 3;
+  // 泡沫原液实际流量
+  float primary_liquid_flow_actual = 4;
+  // 泡沫原液理论用量
+  float primary_liquid_usage_theory = 5;
+  // 泡沫原液实际用量
+  float primary_liquid_usage_actual = 6;
+  // 泡沫灭火剂用量(理论)
+  float fire_extinguishing_usage_theory = 7;
+  // 泡沫灭火剂用量(实际)
+  float fire_extinguishing_usage_actual = 8;
+  // 配置泡沫灭火剂用水流量(理论)
+  float config_fire_extinguishing_flow_theory = 9;
+  // 配置泡沫灭火剂用水流量(实际)
+  float config_fire_extinguishing_flow_actual = 10;
+  // 配置泡沫灭火剂用水量(理论)
+  float config_fire_extinguishing_usage_theory = 11;
+  // 配置泡沫灭火剂用水量(实际)
+  float config_fire_extinguishing_usage_actual = 12;
+  int32 scene_id = 13;
+  // 泡沫灭火供给强度
+  float supply_strength = 14;
+  // 泡沫混合液连续供给时间
+  float supply_time = 15;
+  // 混合比
+  float mix_ratio = 16;
+  // 液池直径
+  float liquid_tank_diameter = 17;
+}
+
+message FireExtinguishingSaveResponse {
+
+}
+
+message CoolingWaterDemandRequest {
+  int32 num = 1;
+  int32 near_num = 2;
+  float diameter = 3;
+  float near_diameter = 4;
+  int32 cooling_time = 5;
+  int32 near_cooling_time = 6;
+  float supply_strength = 7;
+  float near_supply_strength = 8;
+  float single_flow = 9;
+}
+message CoolingWaterDemandResponse {
+  // 用于冷却液池/设备设施用水流量
+  float flow_theory = 1;
+  // 用于冷却液池/设备设施用水流量(实际)
+  float flow_actual = 2;
+  // 用于冷却临近罐用水流量
+  float near_flow_theory = 3;
+  // 用于冷却临近罐用水流量(实际)
+  float near_flow_actual = 4;
+  // 用于冷却液池/设备设施用水量
+  float usage_theory = 5;
+  // 用于冷却液池/设备设施用水量(实际)
+  float usage_actual = 6;
+  // 用于冷却临近罐用水量
+  float near_usage_theory = 7;
+  // 用于冷却临近罐用水量(实际)
+  float near_usage_actual = 8;
+  // 总用水量
+  float total_usage_theory = 9;
+  // 总用水量(实际)
+  float total_usage_actual = 10;
+}
+
+message CoolingWaterSaveRequest {
+  // 用于冷却液池/设备设施用水流量
+  float flow_theory = 1;
+  // 用于冷却液池/设备设施用水流量(实际)
+  float flow_actual = 2;
+  // 用于冷却临近罐用水流量
+  float near_flow_theory = 3;
+  // 用于冷却临近罐用水流量(实际)
+  float near_flow_actual = 4;
+  // 用于冷却液池/设备设施用水量
+  float usage_theory = 5;
+  // 用于冷却液池/设备设施用水量(实际)
+  float usage_actual = 6;
+  // 用于冷却临近罐用水量
+  float near_usage_theory = 7;
+  // 用于冷却临近罐用水量(实际)
+  float near_usage_actual = 8;
+  // 总用水量
+  float total_usage_theory = 9;
+  // 总用水量(实际)
+  float total_usage_actual = 10;
+  int32 scene_id = 11;
+  // 着火液池数量
+  int32 num = 12;
+  // 临近液池数量
+  int32 near_num = 13;
+  // 着火液池直径
+  float diameter = 14;
+  // 临近液池直径
+  float near_diameter = 15;
+  // 着火液池冷却时间
+  int32 cooling_time = 16;
+  // 临近液池冷却时间
+  int32 near_cooling_time = 17;
+  // 着火冷却水供给范围和强度
+  float supply_strength = 18;
+  // 临近冷却水供给范围和强度
+  float near_supply_strength = 19;
+  // 单只泡沫炮流量
+  float single_flow = 20;
+}
+message CoolingWaterSaveResponse {
+
+}
+
+message FireExtinguishing {
+  int32 type = 1;
+  int32 num = 2;
+}
+message EquipmentPersonDemandRequest {
+  // 泡沫枪
+  repeated FireExtinguishing foams = 1;
+  // 冷却着火罐水枪
+  repeated FireExtinguishing cooling_tanks = 2;
+  // 冷却邻近罐水枪
+  repeated FireExtinguishing cooling_near_tanks = 3;
+  // 泡沫灭火剂实际流量
+  float foam_flow = 4;
+  // 冷却着火罐实际水流量
+  float cooling_flow = 5;
+  // 冷却临近罐实际水流量
+  float cooling_near_flow = 6;
+  // 泡沫灭火车流量
+  float foam_truck_flow = 7;
+  // 水罐车流量
+  float water_truck_flow = 8;
+}
+
+message Equipment {
+  string type = 1;
+  // 型号
+  string modelVersion = 2;
+  // 操作人数
+  int32 operatorNum = 3;
+  // 数量
+  int32 num = 4;
+}
+
+message EquipmentPersonDemandResponse {
+  // 泡沫枪
+  repeated Equipment eqs = 1;
+}
+
+message EquipmentRequireRequest {
+  int32 scene_id = 1;
+}
+message EquipmentRequireResponse {
+  // 泡沫灭火剂实际流量
+  float foam_flow = 1;
+  // 冷却着火液池实际水流量
+  float flow = 2;
+  // 冷却临近液池实际水流量
+  float near_flow = 3;
+}
+
+message MaterialBurningHeatGetRequest {
+
+}
+message Material {
+  string name = 1;
+  float burning_heat = 2;
+}
+message MaterialBurningHeatGetResponse {
+  repeated Material materials = 1;
+}
+
+message EnterpriseAreaGetRequest {
+  int32 enterprise_id = 1;
+}
+message LngLat {
+  double lng = 1;
+  double lat = 2;
+}
+message Point {
+  string name = 1;
+  repeated LngLat path = 2;
+}
+message EnterpriseAreaGetResponse {
+  repeated Point points = 1;
+}
+
+message EnterprisesGetRequest {
+
+}
+message Enterprise {
+  int32 id = 1;
+  string name = 2;
+  double lng = 3;
+  double lat = 4;
+}
+message EnterprisesGetResponse {
+  repeated Enterprise enterprises = 1;
+}
+
+message EnterpriseGetRequest {
+  int32 id = 1;
+}
+message EnterpriseGetResponse {
+  Enterprise enterprise = 1;
+}
+
+service AccSimService {
+  // 获取所有事故场景
+  rpc AccSceneGet(AccSceneGetRequest) returns (AccSceneGetResponse);
+  // 保存事故场景
+  rpc AccSceneSave(AccSceneSaveRequest) returns (AccSceneSaveResponse);
+  // 删除场景
+  rpc AccSceneDelete(AccSceneDeleteRequest) returns (AccSceneDeleteResponse);
+  // 查看场景
+  rpc AccSceneInfo(AccSceneInfoRequest) returns (AccSceneInfoResponse);
+  // 池火灾后果计算
+  rpc PoolFireCalc(PoolFireCalcRequest) returns (PoolFireCalcResponse);
+  // 流淌火后果计算
+  rpc FlowingFireCalc(FlowingFireCalcRequest) returns (FlowingFireCalcResponse);
+  // 密封圈后果计算
+  rpc SealRingCalc(SealRingCalcRequest) returns (SealRingCalcResponse);
+  // 喷射火后果计算
+  rpc JetFireCalc(JetFireCalcRequest) returns (JetFireCalcResponse);
+  // 火球火后果计算
+  rpc BallFireCalc(BallFireCalcRequest) returns (BallFireCalcResponse);
+  // 灭火剂需求预测
+  rpc FireExtinguishingDemand(FireExtinguishingDemandRequest) returns (FireExtinguishingDemandResponse);
+  // 保存灭火剂需求预测结果
+  rpc FireExtinguishingSave(FireExtinguishingSaveRequest) returns (FireExtinguishingSaveResponse);
+  // 冷却水需求计算
+  rpc CoolingWaterDemand(CoolingWaterDemandRequest) returns (CoolingWaterDemandResponse);
+  // 保存冷却水需求计算结果
+  rpc CoolingWaterSave(CoolingWaterSaveRequest) returns (CoolingWaterSaveResponse);
+  // 消防装备与人员需求预测
+  rpc EquipmentPersonDemand(EquipmentPersonDemandRequest) returns (EquipmentPersonDemandResponse);
+  // 根据场景获取灭火剂流量
+  rpc EquipmentRequire(EquipmentRequireRequest) returns (EquipmentRequireResponse);
+  // 获取物质及燃烧热
+  rpc MaterialBurningHeatGet(MaterialBurningHeatGetRequest) returns (MaterialBurningHeatGetResponse);
+  // 获取企业区域坐标
+  rpc EnterpriseAreaGet(EnterpriseAreaGetRequest) returns (EnterpriseAreaGetResponse);
+  // 获取所有企业
+  rpc EnterprisesGet(EnterprisesGetRequest) returns (EnterprisesGetResponse);
+  // 获取企业信息
+  rpc EnterpriseGet(EnterpriseGetRequest) returns (EnterpriseGetResponse);
+}

@@ -1,0 +1,43 @@
+config_version: google.api.Service
+http:
+    rules:
+        - body: '*'
+          post: /gustav/FireBuildingRiskAnalyse
+          selector: gustav.GustavService.FireBuildingRiskAnalyse
+        - body: '*'
+          post: /gustav/FireBuildingRiskAnalyseGetCombustibleNames
+          selector: gustav.GustavService.FireBuildingRiskAnalyseGetCombustibleNames
+        - body: '*'
+          post: /gustav/FireBuildingRiskAnalyseGetFireResistTops
+          selector: gustav.GustavService.FireBuildingRiskAnalyseGetFireResistTops
+        - body: '*'
+          post: /gustav/FireBuildingRiskAnalyseGetFireSourceFeature
+          selector: gustav.GustavService.FireBuildingRiskAnalyseGetFireSourceFeature
+        - body: '*'
+          post: /gustav/FireBuildingRiskAnalyseGetFireFightPowerPropertyDis
+          selector: gustav.GustavService.FireBuildingRiskAnalyseGetFireFightPowerPropertyDis
+        - body: '*'
+          post: /gustav/QiGet
+          selector: gustav.GustavService.QiGet
+        - body: '*'
+          post: /gustav/BuildingFireRiskAnalyse
+          selector: gustav.GustavService.BuildingFireRiskAnalyse
+        - body: '*'
+          post: /gustav/BuildingFireRiskAnalyseGetPersonRiskFeature
+          selector: gustav.GustavService.BuildingFireRiskAnalyseGetPersonRiskFeature
+        - body: '*'
+          post: /gustav/BuildingFireRiskAnalyseGetAssetsRiskFeature
+          selector: gustav.GustavService.BuildingFireRiskAnalyseGetAssetsRiskFeature
+        - body: '*'
+          post: /gustav/BuildingFireRiskAnalyseGetSmokeRiskFeature
+          selector: gustav.GustavService.BuildingFireRiskAnalyseGetSmokeRiskFeature
+        - body: '*'
+          post: /gustav/BuildingFireRiskTotalAnalyse
+          selector: gustav.GustavService.BuildingFireRiskTotalAnalyse
+        - body: '*'
+          post: /gustav/BuildingFireRiskTotalAnalyseSavePoint
+          selector: gustav.GustavService.BuildingFireRiskTotalAnalyseSavePoint
+        - body: '*'
+          post: /gustav/BuildingFireRiskTotalAnalyseGetPoint
+          selector: gustav.GustavService.BuildingFireRiskTotalAnalyseGetPoint
+type: 3

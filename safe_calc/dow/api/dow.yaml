@@ -1,0 +1,49 @@
+config_version: google.api.Service
+http:
+    rules:
+        - body: '*'
+          post: /dow/MaterialCoefficientGetChemicalActivityGrade
+          selector: dow.DowService.MaterialCoefficientGetChemicalActivityGrade
+        - body: '*'
+          post: /dow/MaterialCoefficient
+          selector: dow.DowService.MaterialCoefficient
+        - body: '*'
+          post: /dow/MaterialCoefficientSaveUnknownMaterial
+          selector: dow.DowService.MaterialCoefficientSaveUnknownMaterial
+        - body: '*'
+          post: /dow/MaterialCoefficientGetKnownCoefficient
+          selector: dow.DowService.MaterialCoefficientGetKnownCoefficient
+        - body: '*'
+          post: /dow/MaterialCoefficientGetKnownNames
+          selector: dow.DowService.MaterialCoefficientGetKnownNames
+        - body: '*'
+          post: /dow/MaterialCoefficientGetReactionCharacters
+          selector: dow.DowService.MaterialCoefficientGetReactionCharacters
+        - body: '*'
+          post: /dow/MaterialCoefficientGetTypes
+          selector: dow.DowService.MaterialCoefficientGetTypes
+        - body: '*'
+          post: /dow/ProcessHazardCoefficientGet
+          selector: dow.DowService.ProcessHazardCoefficientGet
+        - body: '*'
+          post: /dow/CompensationCoefficientGet
+          selector: dow.DowService.CompensationCoefficientGet
+        - body: '*'
+          post: /dow/GeneralProcessHazardCoefficientCalc
+          selector: dow.DowService.GeneralProcessHazardCoefficientCalc
+        - body: '*'
+          post: /dow/SpecialProcessHazardCoefficientCalc
+          selector: dow.DowService.SpecialProcessHazardCoefficientCalc
+        - body: '*'
+          post: /dow/ProcessControlCompensationCoefficientCalc
+          selector: dow.DowService.ProcessControlCompensationCoefficientCalc
+        - body: '*'
+          post: /dow/MaterialIsolationCompensationCoefficientCalc
+          selector: dow.DowService.MaterialIsolationCompensationCoefficientCalc
+        - body: '*'
+          post: /dow/FirePreventionMeasureCompensationCoefficientCalc
+          selector: dow.DowService.FirePreventionMeasureCompensationCoefficientCalc
+        - body: '*'
+          post: /dow/EvaluationResultsCalc
+          selector: dow.DowService.EvaluationResultsCalc
+type: 3

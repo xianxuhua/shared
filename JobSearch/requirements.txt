@@ -1,0 +1,15 @@
+django
+djangorestframework
+django-filter
+markdown
+coreapi
+django-guardian
+Pygments
+PyYAML
+uritemplate
+mysqlclient
+django-cors-headers
+djangorestframework-simplejwt
+requests
+Pillow
+django_redis

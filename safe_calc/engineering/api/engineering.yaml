@@ -1,0 +1,40 @@
+config_version: google.api.Service
+http:
+    rules:
+        - body: '*'
+          post: /engineering/FireLoadFactor
+          selector: engineering.EngineeringService.FireLoadFactor
+        - body: '*'
+          post: /engineering/AreaFactor
+          selector: engineering.EngineeringService.AreaFactor
+        - body: '*'
+          post: /engineering/FireSpreadFactor
+          selector: engineering.EngineeringService.FireSpreadFactor
+        - body: '*'
+          post: /engineering/VentilationFactor
+          selector: engineering.EngineeringService.VentilationFactor
+        - body: '*'
+          post: /engineering/ChannelFactor
+          selector: engineering.EngineeringService.ChannelFactor
+        - body: '*'
+          post: /engineering/FloorFactor
+          selector: engineering.EngineeringService.FloorFactor
+        - body: '*'
+          post: /engineering/PotentialRisk
+          selector: engineering.EngineeringService.PotentialRisk
+        - body: '*'
+          post: /engineering/ActivityFactor
+          selector: engineering.EngineeringService.ActivityFactor
+        - body: '*'
+          post: /engineering/EvacuationTimeFactor
+          selector: engineering.EngineeringService.EvacuationTimeFactor
+        - body: '*'
+          post: /engineering/ProtectionLevel
+          selector: engineering.EngineeringService.ProtectionLevel
+        - body: '*'
+          post: /engineering/AcceptanceCriteria
+          selector: engineering.EngineeringService.AcceptanceCriteria
+        - body: '*'
+          post: /engineering/FireRisk
+          selector: engineering.EngineeringService.FireRisk
+type: 3

@@ -1,0 +1,25 @@
+config_version: google.api.Service
+http:
+    rules:
+        - body: '*'
+          post: /fireloss/FireGrowthCoefficient
+          selector: fireloss.FireLossService.FireGrowthCoefficient
+        - body: '*'
+          post: /fireloss/FireGrowthCategory
+          selector: fireloss.FireLossService.FireGrowthCategory
+        - body: '*'
+          post: /fireloss/StageOne
+          selector: fireloss.FireLossService.StageOne
+        - body: '*'
+          post: /fireloss/StageTwo
+          selector: fireloss.FireLossService.StageTwo
+        - body: '*'
+          post: /fireloss/StageThree
+          selector: fireloss.FireLossService.StageThree
+        - body: '*'
+          post: /fireloss/StageFour
+          selector: fireloss.FireLossService.StageFour
+        - body: '*'
+          post: /fireloss/BurntArea
+          selector: fireloss.FireLossService.BurntArea
+type: 3

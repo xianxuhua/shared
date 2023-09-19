@@ -1,0 +1,22 @@
+export namespace accsimUrl {
+    export const AccSceneGet = "/accsim/AccSceneGet"
+    export const AccSceneSave = "/accsim/AccSceneSave"
+    export const AccSceneDelete = "/accsim/AccSceneDelete"
+    export const AccSceneInfo = "/accsim/AccSceneInfo"
+    export const PoolFireCalc = "/accsim/PoolFireCalc"
+    export const FlowingFireCalc = "/accsim/FlowingFireCalc"
+    export const SealRingCalc = "/accsim/SealRingCalc"
+    export const JetFireCalc = "/accsim/JetFireCalc"
+    export const BallFireCalc = "/accsim/BallFireCalc"
+    export const FireExtinguishingDemand = "/accsim/FireExtinguishingDemand"
+    export const FireExtinguishingSave = "/accsim/FireExtinguishingSave"
+    export const CoolingWaterDemand = "/accsim/CoolingWaterDemand"
+    export const CoolingWaterSave = "/accsim/CoolingWaterSave"
+    export const EquipmentPersonDemand = "/accsim/EquipmentPersonDemand"
+    export const EquipmentRequire = "/accsim/EquipmentRequire"
+    export const MaterialBurningHeatGet = "/accsim/MaterialBurningHeatGet"
+    export const EnterpriseAreaGet = "/accsim/EnterpriseAreaGet"
+    export const EnterprisesGet = "/accsim/EnterprisesGet"
+    export const EnterpriseGet = "/accsim/EnterpriseGet"
+
+}

@@ -1,0 +1,7 @@
+.vscode/
+.idea/
+*/__pycache__/
+cmd/
+media/*
+static/admin
+static/rest_framework

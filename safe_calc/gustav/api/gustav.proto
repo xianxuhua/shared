@@ -1,0 +1,185 @@
+syntax = "proto3";
+
+package gustav;
+option go_package = "safe/gustav/gen;gustavpb";
+
+
+message FireBuildingRiskAnalyseRequest {
+    string move_fire_type = 1;
+    float move_fire_quality = 2;
+    float access_area = 3;
+    string fire_resist_top = 4;
+    string fire_source_feature = 5;
+    string fire_fight_power_property = 6;
+    string fire_control_dis = 7;
+    float Qi = 8;
+}
+
+// 变量不能用大写
+message FireBuildingRiskAnalyseResponse {
+    float move_fire_load_factor_qm = 1;
+    float fire_fight_delay_factor_l = 2;
+    float burning_perform_factor_c = 3;
+    float building_fire_resist_factor_w = 4;
+    float fire_area_position_factor_b = 5;
+    float risk_reduce_factor_ri = 6;
+    float building_risk_gr = 7;
+}
+
+
+
+message Combustible {
+    string name = 1;
+    string code = 2;
+}
+message FireBuildingRiskAnalyseGetCombustibleNamesRequest {
+
+}
+message FireBuildingRiskAnalyseGetCombustibleNamesResponse {
+    repeated Combustible combustible_names = 1;
+}
+
+message FireResist {
+    string name = 1;
+    string code = 2;
+}
+message FireBuildingRiskAnalyseGetFireResistTopsRequest {
+
+}
+message FireBuildingRiskAnalyseGetFireResistTopsResponse {
+    repeated FireResist fire_resist_tops = 1;
+}
+
+message FireSource {
+    string name = 1;
+    string code = 2;
+}
+message FireBuildingRiskAnalyseGetFireSourceFeatureRequest {
+
+}
+message FireBuildingRiskAnalyseGetFireSourceFeatureResponse {
+    repeated FireSource fire_source_features = 1;
+}
+
+message FireFightPowerProperty {
+    string name = 1;
+    string code = 2;
+}
+message FireFightPowerDis {
+    string name = 1;
+    string code = 2;
+}
+message FireBuildingRiskAnalyseGetFireFightPowerPropertyDisRequest {
+
+}
+message FireBuildingRiskAnalyseGetFireFightPowerPropertyDisResponse {
+    repeated FireFightPowerProperty fire_fight_power_property = 1;
+    repeated FireFightPowerDis fire_fight_power_dis = 2;
+}
+
+message BuildingFireRiskAnalyseRequest {
+    string person_fire_risk_feature = 1;
+    string assets_fire_risk_feature = 2;
+    string smoke_fire_risk_feature = 3;
+}
+
+message BuildingFireRiskAnalyseResponse {
+    float person_risk_factor_h = 1;
+    float assets_risk_factor_d = 2;
+    float smoke_risk_factor_f = 3;
+    float building_fire_risk_ir = 4;
+}
+
+
+message RiskFeature {
+    string name = 1;
+    string code = 2;
+}
+message BuildingFireRiskAnalyseGetPersonRiskFeatureRequest {
+
+}
+message BuildingFireRiskAnalyseGetPersonRiskFeatureResponse {
+    repeated RiskFeature person_risk_feature = 1;
+}
+message BuildingFireRiskAnalyseGetAssetsRiskFeatureRequest {
+
+}
+message BuildingFireRiskAnalyseGetAssetsRiskFeatureResponse {
+    repeated RiskFeature assets_risk_feature = 1;
+}
+message BuildingFireRiskAnalyseGetSmokeRiskFeatureRequest {
+
+}
+message BuildingFireRiskAnalyseGetSmokeRiskFeatureResponse {
+    repeated RiskFeature smoke_risk_feature = 1;
+}
+
+
+message BuildingFireRiskTotalAnalyseRequest {
+    string building_risk_GR = 1;
+    string building_fire_risk_IR = 2;
+}
+
+message BuildingFireRiskTotalAnalyseResponse {
+    string conclusion = 1;
+}
+
+message BuildingFireRiskTotalAnalyseSavePointRequest {
+  double x = 1;
+  double y = 2;
+}
+
+message BuildingFireRiskTotalAnalyseSavePointResponse {
+}
+
+message BuildingFireRiskTotalAnalyseGetPointRequest {
+
+}
+message Point {
+  double x = 1;
+  double y = 2;
+}
+message BuildingFireRiskTotalAnalyseGetPointResponse {
+  repeated Point points = 1;
+}
+
+message QiGetRequest {
+
+}
+message Qi {
+  string name = 1;
+  float code = 2;
+}
+message QiGetResponse {
+  repeated Qi qis = 1;
+}
+service GustavService {
+  // 火灾建筑物危险度GR分析
+  rpc FireBuildingRiskAnalyse(FireBuildingRiskAnalyseRequest) returns (FireBuildingRiskAnalyseResponse);
+  // 可燃物名称
+  rpc FireBuildingRiskAnalyseGetCombustibleNames(FireBuildingRiskAnalyseGetCombustibleNamesRequest) returns (FireBuildingRiskAnalyseGetCombustibleNamesResponse);
+  // 耐火极限
+  rpc FireBuildingRiskAnalyseGetFireResistTops(FireBuildingRiskAnalyseGetFireResistTopsRequest) returns (FireBuildingRiskAnalyseGetFireResistTopsResponse);
+  // 点火源特征
+  rpc FireBuildingRiskAnalyseGetFireSourceFeature(FireBuildingRiskAnalyseGetFireSourceFeatureRequest) returns (FireBuildingRiskAnalyseGetFireSourceFeatureResponse);
+  // 灭火力量性质, 与消防力量直线距离
+  rpc FireBuildingRiskAnalyseGetFireFightPowerPropertyDis(FireBuildingRiskAnalyseGetFireFightPowerPropertyDisRequest) returns (FireBuildingRiskAnalyseGetFireFightPowerPropertyDisResponse);
+  // 固定火灾载荷因子
+  rpc QiGet(QiGetRequest) returns (QiGetResponse);
+
+  // 建筑物内火灾危险度IR分析
+  rpc BuildingFireRiskAnalyse(BuildingFireRiskAnalyseRequest) returns (BuildingFireRiskAnalyseResponse);
+  // 人员的火灾危险特性
+  rpc BuildingFireRiskAnalyseGetPersonRiskFeature(BuildingFireRiskAnalyseGetPersonRiskFeatureRequest) returns (BuildingFireRiskAnalyseGetPersonRiskFeatureResponse);
+  // 财产的火灾危险性特征
+  rpc BuildingFireRiskAnalyseGetAssetsRiskFeature(BuildingFireRiskAnalyseGetAssetsRiskFeatureRequest) returns (BuildingFireRiskAnalyseGetAssetsRiskFeatureResponse);
+  // 烟气的火灾危险性特征
+  rpc BuildingFireRiskAnalyseGetSmokeRiskFeature(BuildingFireRiskAnalyseGetSmokeRiskFeatureRequest) returns (BuildingFireRiskAnalyseGetSmokeRiskFeatureResponse);
+
+  // 建筑物火灾危险度综合分析
+  rpc BuildingFireRiskTotalAnalyse(BuildingFireRiskTotalAnalyseRequest) returns (BuildingFireRiskTotalAnalyseResponse);
+  // 存储绘制的区域
+  rpc BuildingFireRiskTotalAnalyseSavePoint(BuildingFireRiskTotalAnalyseSavePointRequest) returns (BuildingFireRiskTotalAnalyseSavePointResponse);
+  // 获取所有绘制区域
+  rpc BuildingFireRiskTotalAnalyseGetPoint(BuildingFireRiskTotalAnalyseGetPointRequest) returns (BuildingFireRiskTotalAnalyseGetPointResponse);
+}
